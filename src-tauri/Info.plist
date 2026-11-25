@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>NSAudioCaptureUsageDescription</key>
+  <string>Black Adam listens to what your Mac is playing to identify songs.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Black Adam can use the microphone to identify songs playing around you.</string>
+</dict>
+</plist>

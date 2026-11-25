@@ -1,0 +1,51 @@
+[package]
+name = "black-adam"
+version = "3.0.0"
+description = "Identify any song playing on your computer"
+authors = ["Aditya Sharma"]
+license = "GPL-3.0-or-later"
+repository = "https://github.com/Adityasharma0101911/Black-Adam"
+edition = "2024"
+
+[lib]
+name = "black_adam_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-notification = "2"
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-autostart = "2"
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["time", "sync", "net", "io-util"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+cpal = "0.18"
+realfft = "3.5"
+base64 = "0.22"
+byteorder = "1.5"
+crc32fast = "1.4"
+uuid = { version = "1", features = ["v4"] }
+rand = "0.9"
+sha2 = "0.10"
+symphonia = { version = "0.5", features = ["all"] }
+discord-rich-presence = "1"
+tauri-plugin-single-instance = "2"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
+
+# PulseAudio exposes "Monitor of ..." sources for system-audio capture on Linux
+[target.'cfg(target_os = "linux")'.dependencies]
+cpal = { version = "0.18", features = ["pulseaudio"] }

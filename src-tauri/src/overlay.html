@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Black Adam overlay</title>
+<style>
+  html, body { margin: 0; background: transparent; font-family: "Segoe UI", system-ui, sans-serif; }
+  .card { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 12px; width: max-content; max-width: 560px;
+    background: rgba(8, 8, 8, .82); border: 1px solid rgba(245, 158, 11, .35); border-radius: 16px; color: #fff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .4); transform: translateY(12px); opacity: 0; transition: all .5s cubic-bezier(.2, .8, .2, 1); }
+  .card.show { transform: none; opacity: 1; }
+  img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; background: #222; }
+  .t { font-weight: 700; font-size: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 440px; }
+  .a { color: #fbbf24; font-size: 15px; margin-top: 2px; }
+  .k { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
+</style>
+</head>
+<body>
+<div class="card" id="c"><img id="i" alt="" hidden><div><div class="k">Now playing</div><div class="t" id="t"></div><div class="a" id="a"></div></div></div>
+<script>
+  let key = null;
+  async function poll() {
+    try {
+      const s = await (await fetch('/now', { cache: 'no-store' })).json();
+      if (s && s.key !== key) {
+        key = s.key;
+        const c = document.getElementById('c');
+        c.classList.remove('show');
+        setTimeout(() => {
+          document.getElementById('t').textContent = s.title;
+          document.getElementById('a').textContent = s.artist;
+          const img = document.getElementById('i');
+          img.hidden = !s.coverUrl;
+          if (s.coverUrl) img.src = s.coverUrl;
+          c.classList.add('show');
+        }, 300);
+      }
+    } catch (e) {}
+  }
+  poll();
+  setInterval(poll, 2000);
+</script>
+</body>
+</html>
