@@ -116,9 +116,16 @@ class ModernButton(QPushButton):
 
 class SongCard(GlassCard):
     """Song result card with album art and action buttons"""
+    
+    # Signal for thread-safe album art update
+    album_art_loaded = Signal(QPixmap)
+    
     def __init__(self, song: SongMatch, rank: int, parent=None):
         super().__init__(parent)
         self.song = song
+        
+        # Connect signal for album art update
+        self.album_art_loaded.connect(self._set_album_art)
         
         # Add to history
         self._add_to_history(song)
@@ -258,13 +265,13 @@ class SongCard(GlassCard):
                 # Store reference to prevent garbage collection
                 self._pixmap_ref = pixmap
                 
-                # Update on main thread
-                QTimer.singleShot(0, lambda p=pixmap: self._set_album_art(p))
+                # Emit signal to update on main thread (NOT QTimer!)
+                self.album_art_loaded.emit(pixmap)
         except Exception as e:
             print(f"Album art error: {e}")
     
     def _set_album_art(self, pixmap):
-        """Set the album art pixmap (called on main thread)"""
+        """Set the album art pixmap (called on main thread via signal)"""
         self.album_art.setPixmap(pixmap)
         self.album_art.setText("")
 
