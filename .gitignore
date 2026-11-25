@@ -9,3 +9,17 @@ dist/
 .gemini/
 
 .env
+
+# AI / agent files (never commit)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+AGENTS.md
+GEMINI.md
+.cursor/
+.cursorrules
+.windsurf/
+.aider*
+.copilot/
+graphify-out/
+*.prompt.md
