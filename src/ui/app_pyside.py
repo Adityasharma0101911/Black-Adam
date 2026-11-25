@@ -1,5 +1,5 @@
 """
-Modern PySide6 UI for Portable Shazam
+Modern PySide6 UI for Black Adam
 Responsive, glassmorphism design with smooth animations
 """
 import sys
@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QGraphicsBlurEffect, QScrollArea, QSizePolicy
 )
 from PySide6.QtCore import Qt, QTimer, Signal, QObject, QSize, QPropertyAnimation, QEasingCurve
-from PySide6.QtGui import QPixmap, QFont, QColor, QPalette, QLinearGradient, QBrush, QPainter, QImage
+from PySide6.QtGui import QIcon, QPixmap, QFont, QColor, QPalette, QLinearGradient, QBrush, QPainter, QImage
 
 import requests
 from PIL import Image, ImageFilter
@@ -31,6 +31,9 @@ try:
 except ImportError:
     config = None
 
+
+# Bundled assets live in sys._MEIPASS when frozen by PyInstaller
+ICON_PATH = os.path.join(getattr(sys, "_MEIPASS", os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "assets", "icon.png")
 
 # Global song history
 song_history = []
@@ -276,13 +279,14 @@ class SongCard(GlassCard):
         self.album_art.setText("")
 
 
-class PortableShazamWindow(QMainWindow):
+class BlackAdamWindow(QMainWindow):
     """Main application window"""
     
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Portable Shazam")
+        self.setWindowTitle("Black Adam")
+        self.setWindowIcon(QIcon(ICON_PATH))
         self.setMinimumSize(500, 700)
         self.resize(550, 800)
         
@@ -371,12 +375,12 @@ class PortableShazamWindow(QMainWindow):
         header = QVBoxLayout()
         header.setAlignment(Qt.AlignCenter)
         
-        icon = QLabel("🎵")
-        icon.setFont(QFont("Segoe UI", 48))
+        icon = QLabel()
+        icon.setPixmap(QPixmap(ICON_PATH).scaled(72, 72, Qt.KeepAspectRatio, Qt.SmoothTransformation))
         icon.setAlignment(Qt.AlignCenter)
         header.addWidget(icon)
         
-        title = QLabel("Portable Shazam")
+        title = QLabel("Black Adam")
         title.setFont(QFont("Segoe UI", 28, QFont.Bold))
         title.setAlignment(Qt.AlignCenter)
         header.addWidget(title)
@@ -548,7 +552,7 @@ class PortableShazamWindow(QMainWindow):
                 color: #a78bfa;
             }
         """)
-        github_btn.clicked.connect(lambda: webbrowser.open("https://github.com/Adityasharma0101911/Portable-Shazam"))
+        github_btn.clicked.connect(lambda: webbrowser.open("https://github.com/Adityasharma0101911/Black-Adam"))
         footer.addWidget(github_btn)
         
         portfolio_btn = QPushButton("Portfolio")
@@ -780,7 +784,7 @@ def run_app():
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
     
-    window = PortableShazamWindow()
+    window = BlackAdamWindow()
     window.show()
     
     sys.exit(app.exec())

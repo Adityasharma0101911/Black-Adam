@@ -1,5 +1,5 @@
 """
-UI Components for Portable Shazam
+UI Components for Black Adam
 With album art support and song history
 """
 import customtkinter as ctk

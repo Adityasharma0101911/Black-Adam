@@ -1,5 +1,5 @@
 """
-Modern UI Styles for Portable Shazam
+Modern UI Styles for Black Adam
 Clean, elegant design with smooth gradients
 """
 
@@ -74,7 +74,7 @@ RADIUS = {
 
 # Window settings
 WINDOW = {
-    "title": "Portable Shazam",
+    "title": "Black Adam",
     "width": 500,
     "height": 800,
     "min_width": 450,

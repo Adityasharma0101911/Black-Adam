@@ -1,5 +1,5 @@
 """
-Portable Shazam - Music Recognition App
+Black Adam - Music Recognition App
 ========================================
 Identify any song playing on your computer!
 Uses ShazamIO - FREE unlimited song recognition!
@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 def main():
     """Main entry point"""
-    print("Portable Shazam")
+    print("Black Adam")
     print("=" * 40)
     
     # Check for dependencies

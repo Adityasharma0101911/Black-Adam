@@ -1,4 +1,4 @@
-# Portable Shazam Configuration
+# Black Adam Configuration
 # ================================
 # Uses ShazamIO - FREE unlimited song recognition!
 

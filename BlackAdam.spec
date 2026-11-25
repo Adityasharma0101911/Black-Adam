@@ -2,7 +2,7 @@
 from PyInstaller.utils.hooks import collect_all
 import sys
 
-datas = []
+datas = [('assets/icon.png', 'assets')]
 binaries = []
 hiddenimports = ['shazamio', 'soundcard', 'customtkinter', 'PIL', 'aiohttp']
 tmp_ret = collect_all('customtkinter')
@@ -30,7 +30,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='PortableShazam',
+    name='BlackAdam',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -43,13 +43,14 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='assets/icon.ico' if sys.platform == 'win32' else 'assets/icon.png',
 )
 
 # macOS Bundle
 if sys.platform == 'darwin':
     app = BUNDLE(
         exe,
-        name='PortableShazam.app',
-        icon=None,
-        bundle_identifier='com.adityasharma.portableshazam',
+        name='BlackAdam.app',
+        icon='assets/icon.png',
+        bundle_identifier='com.adityasharma.blackadam',
     )

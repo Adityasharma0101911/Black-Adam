@@ -1,1 +1,1 @@
-from .app import PortableShazamApp
+from .app import BlackAdamApp

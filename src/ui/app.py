@@ -1,5 +1,5 @@
 """
-Main Application Window for Portable Shazam
+Main Application Window for Black Adam
 Enhanced with SongPi-inspired UI: blurred backgrounds, fullscreen, centered layout
 """
 import customtkinter as ctk
@@ -33,7 +33,7 @@ except ImportError:
     config = None
 
 
-class PortableShazamApp(ctk.CTk):
+class BlackAdamApp(ctk.CTk):
     """Main application window with enhanced UI"""
     
     def __init__(self):
@@ -194,7 +194,7 @@ class PortableShazamApp(ctk.CTk):
         # App title with accent color
         self.app_title = ctk.CTkLabel(
             self.title_frame,
-            text="Portable Shazam",
+            text="Black Adam",
             font=(FONTS["family"], FONTS["size_2xl"], "bold"),
             text_color=COLORS["text_primary"]
         )
@@ -378,7 +378,7 @@ class PortableShazamApp(ctk.CTk):
             fg_color="transparent",
             text_color=COLORS["accent_primary"],
             hover_color=COLORS["bg_secondary"],
-            command=lambda: webbrowser.open("https://github.com/Adityasharma0101911/Portable-Shazam")
+            command=lambda: webbrowser.open("https://github.com/Adityasharma0101911/Black-Adam")
         )
         github_btn.pack(side="left", padx=(0, 5))
         
@@ -605,7 +605,7 @@ class PortableShazamApp(ctk.CTk):
 
 def run_app():
     """Entry point to run the application"""
-    app = PortableShazamApp()
+    app = BlackAdamApp()
     app.mainloop()
 
 

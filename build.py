@@ -17,11 +17,11 @@ def run_build():
         
     # Common PyInstaller args
     # Note: We use the .spec file for configuration
-    cmd = [sys.executable, "-m", "PyInstaller", "PortableShazam.spec"]
+    cmd = [sys.executable, "-m", "PyInstaller", "BlackAdam.spec"]
     
     # Check if spec file exists
-    if not os.path.exists("PortableShazam.spec"):
-        print("Error: PortableShazam.spec not found!")
+    if not os.path.exists("BlackAdam.spec"):
+        print("Error: BlackAdam.spec not found!")
         sys.exit(1)
         
     print("Starting build...")
@@ -31,11 +31,11 @@ def run_build():
         
         # Post-build info
         if os_name == "Windows":
-            print("Executable is in dist/PortableShazam.exe")
+            print("Executable is in dist/BlackAdam.exe")
         elif os_name == "Darwin": # macOS
-            print("App bundle is in dist/PortableShazam.app")
+            print("App bundle is in dist/BlackAdam.app")
         elif os_name == "Linux":
-            print("Executable is in dist/PortableShazam")
+            print("Executable is in dist/BlackAdam")
             
     except subprocess.CalledProcessError:
         print("\nBuild failed!")

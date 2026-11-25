@@ -1,5 +1,5 @@
 """
-Audio Capture Module for Portable Shazam
+Audio Capture Module for Black Adam
 Handles Windows WASAPI loopback audio capture
 """
 import io

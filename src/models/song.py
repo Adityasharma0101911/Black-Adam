@@ -1,5 +1,5 @@
 """
-Song data model for Portable Shazam
+Song data model for Black Adam
 """
 from dataclasses import dataclass
 from typing import Optional

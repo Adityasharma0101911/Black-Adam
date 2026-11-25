@@ -1,5 +1,5 @@
 """
-Music Recognition API Client for Portable Shazam
+Music Recognition API Client for Black Adam
 Uses ShazamIO (free, unlimited) - https://github.com/shazamio/ShazamIO
 """
 import asyncio
